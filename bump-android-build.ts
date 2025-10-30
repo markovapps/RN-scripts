@@ -46,6 +46,8 @@ try {
     run(`git add "${gradlePath}"`);
     run(`git commit -m "${commitMsg}"`);
     run(`git tag "${tag}"`);
+    run(`git push`);
+    run(`git push origin "${tag}"`);
 
     console.log(`✅ Updated versionCode to ${newVersionCode}, committed and tagged as ${tag}`);
 } catch (e: any) {
