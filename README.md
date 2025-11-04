@@ -1,9 +1,15 @@
 
+ 
+```shell
 # Add as submodule
 git submodule add git@github.com:markovapps/RN-scripts.git scripts
 
-# then add to package.json
-```shell
+# run
+jbang --fresh scripts/submit_ios.java --path 
+```
+
+npx Add to package.json
+```json
 "scripts": {
     "bump:ios": "npx tsx scripts/bump-ios-build.ts",
     "bump:android": "npx tsx scripts/bump-android-build.ts",
