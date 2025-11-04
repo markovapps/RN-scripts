@@ -5,9 +5,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import utils.GitProxy.CommitSource;
+
 import static utils.GitProxy.assertCleanGit;
 import static utils.GitProxy.commit;
-import static utils.Shell.run;
 import static utils.TextFormat.bold;
 
 String gradlePath = "android/app/build.gradle";
@@ -28,7 +29,7 @@ void main() {
         gradleFile = gradleFile.replaceAll("versionCode\\s+\\d+", "versionCode " + nextVersionCode);
         Files.writeString(Path.of(gradlePath), gradleFile);
 
-        commit(versionName, nextVersionCode);
+        commit(CommitSource.ANDROID, versionName, nextVersionCode);
 
     } catch (Exception e) {
         System.err.println("❌ Error: " + e);

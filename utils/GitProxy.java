@@ -16,8 +16,12 @@ public final class GitProxy {
         }
     }
 
-    public static void commit(String version, String build) throws IOException {
-        var tag = String.format("ios.%s.%s", version, build);
+    public enum CommitSource {
+        ANDROID, IOS
+    }
+
+    public static void commit(CommitSource source, String version, String build) throws IOException {
+        var tag = String.format("%s.%s.%s", source.toString().toLowerCase(), version, build);
         var commitMsg = tag;
 
         run("git add .");

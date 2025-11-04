@@ -3,6 +3,8 @@
 
 import java.io.IOException;
 
+import utils.GitProxy.CommitSource;
+
 import static utils.GitProxy.assertCleanGit;
 import static utils.GitProxy.commit;
 import static utils.Shell.run;
@@ -22,7 +24,7 @@ void main() {
 
         setValue("CFBundleVersion", nextBuild);
 
-        commit(version, nextBuild);
+        commit(CommitSource.IOS, version, nextBuild);
     } catch (Exception e) {
         System.err.println("❌ Error: " + e);
         System.exit(1);
