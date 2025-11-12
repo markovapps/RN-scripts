@@ -12,6 +12,7 @@ void main(String... args) {
     try {
         // --- Load environment variables from .env.local ---
         var xcuser = EnvProxy.read().xcuser();
+        IO.println("🫆 XCode user: " + bold(xcuser.user()));
         var appArgs = new Args(args);
 
         var path = appArgs.path();
@@ -31,7 +32,7 @@ void main(String... args) {
 
         // --- Upload ---
         String uploadCmd = String.format(
-                "xcrun altool --upload-app -f \"%s\" -t ios -u \"%s\" -p \"%s\"--output-format json",
+                "xcrun altool --upload-app -f \"%s\" -t ios -u \"%s\" -p \"%s\" --output-format json",
                 path, xcuser.user(), xcuser.password());
         run(uploadCmd);
 
