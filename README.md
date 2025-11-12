@@ -5,7 +5,9 @@
 git submodule add git@github.com:markovapps/RN-scripts.git scripts
 
 # run
+jbang --fresh scripts/bump_ios_build.java && npx eas-cli build --platform ios
 jbang --fresh scripts/submit_ios.java --path 
+
 ```
 
 npx Add to package.json
